@@ -1,0 +1,214 @@
+﻿@model AdminPanelAgain.Models.ViewModel.RegisterViewModel
+
+@using AdminPanelAgain.Extentions
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="row" style="margin-top:25px;">
+    <div class="col-md-12">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">AJAX DATATABEL</h3>
+            </div>
+            <div class="panel-body">
+                @*<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Mymodal">
+                    Launch Modal
+                    </button>*@
+
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Mymodal">
+                    Add Data
+                </button>
+                @*<a href="#" class="btn btn-success" data-target="#ModelAdd" data-toggle="modal">Add New Record</a>*@
+
+                @*<a href="#" class="btn btn-success" data-target="#ModelAdd" data-toggle="modal">Add New Record</a>*@
+                <br /><br />
+                <table id="myTable" class="table table-bordered table-condensed table-hover">
+                    <thead>
+                        <tr>
+                            <th>UserName</th>
+                            <th>FullName</th>
+                            <th>LastName</th>
+                            <th>Password</th>
+                            <th>ConfirmPassword</th>
+                            @*<th>Country</th>*@
+                            <th>IsCsharp</th>
+                            <th>IsPython</th>
+                            <th>IsJava</th>
+                            <th>UpdatedOn</th>
+                            <th>CreatedOn</th>
+                            <th>UpdatedBY</th>
+                            <th>CreatedBy</th>
+                            <th>IsActive</th>
+                            <th>Image</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in ViewBag.Lists)
+                        {
+                            <tr id="row_@item.Id">
+                                <td>@item.UserName</td>
+                                <td>@item.FullName</td>
+                                <td>@item.LastName</td>
+                                <td>@item.Password</td>
+                                <td>@item.ConfirmPassword</td>
+                                @*<td>@item.Country.Name</td>*@
+                                <td>@item.IsCsharp</td>
+                                <td>@item.IsPython</td>
+                                <td>@item.IsJava</td>
+                                <td>@item.UpdatedOn</td>
+                                <td>@item.CreatedOn</td>
+                                <td>@item.UpdatedBY</td>
+                                <td>@item.CreatedBy</td>
+                                <td>@item.IsActive</td>
+                                <td>@item.Image</td>
+                                <td><a href="#" class="btn btn-danger  glyphicon glyphicon-trash" onclick="OnBtnClickDeleteOption(@item.Id)">Delete</a></td>
+                            </tr>
+
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+@*Bootstrap Model Adding*@
+<!-- .Launch Modal Button-->
+<!-- .modal -->
+<div class="modal fade" id="Mymodal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+
+                <h4 class="modal-title">
+                    Insert Data
+                </h4>
+                <button type="button" class="close" data-dismiss="modal">
+                    &times;
+                </button>
+            </div>
+            <div class="modal-body">
+                <form asp-action="Create" asp-controller="Register" method="post" enctype="multipart/form-data"  new { id = "fomrsubmite" }>
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="UserDbs.UserName" class="control-label"></label>
+                        <input asp-for="UserDbs.UserName" class="form-control" />
+                        <span asp-validation-for="UserDbs.UserName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="UserDbs.FullName" class="control-label"></label>
+                        <input asp-for="UserDbs.FullName" class="form-control" />
+                        <span asp-validation-for="UserDbs.FullName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="UserDbs.LastName" class="control-label"></label>
+                        <input asp-for="UserDbs.LastName" class="form-control" />
+                        <span asp-validation-for="UserDbs.LastName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="UserDbs.Password" class="control-label"></label>
+                        <input asp-for="UserDbs.Password" class="form-control" />
+                        <span asp-validation-for="UserDbs.Password" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="UserDbs.ConfirmPassword" class="control-label"></label>
+                        <input asp-for="UserDbs.ConfirmPassword" class="form-control" />
+                        <span asp-validation-for="UserDbs.ConfirmPassword" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="UserDbs.Address" class="control-label"></label>
+                        <input asp-for="UserDbs.Address" class="form-control" />
+                        <span asp-validation-for="UserDbs.Address" class="text-danger"></span>
+                    </div>
+                    @*<div class="form-group">
+                            <select asp-for="UserDbs.CountryIds" asp-items="Model.Countries.ToSelectListItem(Model.UserDbs.CountryIds)" class="form-control"></select>
+
+                        </div>*@
+                    <div class="form-group form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" asp-for="UserDbs.IsCsharp" /> @Html.DisplayNameFor(model => model.UserDbs.IsCsharp)
+                        </label>
+                    </div>
+                    <div class="form-group form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" asp-for="UserDbs.IsPython" /> @Html.DisplayNameFor(model => model.UserDbs.IsPython)
+                        </label>
+                    </div>
+                    <div class="form-group form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" asp-for="UserDbs.IsJava" /> @Html.DisplayNameFor(model => model.UserDbs.IsJava)
+                        </label>
+                    </div>
+
+
+                    <div class="form-group row">
+                        <div class="col-2">
+                            <label asp-for="UserDbs.Image"></label>
+                        </div>
+                        <div class="col-5">
+                            <input type="file" name="files" />
+                        </div>
+
+
+                    </div>
+
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Create" class="btn btn-default" id="AddnewData" />
+                    </div>>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">
+                    Close
+                </button>
+                <button type="button" class="btn btn-primary">
+                    Ok
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<script src="~/js/site.js"></script>
+
+<script>
+    var OnBtnClickDeleteOption = function (EmployeeID) {
+        $("#Id").val(EmployeeID);
+        $("#Deletemodal").modal("show");
+    }
+    var Delet = function () {
+       var dat = $("#hiddenEmployeeId").val();
+        $.ajax({
+            type: "POST",
+            url: '@Url.Action("DeleteData","Home")',
+            data: { EmployeeID: dat },
+            success: function () {
+                alert("Data is deleted");
+                $("#row" + empid).remove();
+
+            }
+        })
+    }
+</script>
+
+
+
+
+
+
+
+
+

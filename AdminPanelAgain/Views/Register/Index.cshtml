@@ -1,0 +1,296 @@
+﻿@model IEnumerable<AdminPanelAgain.Models.UserDb>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+
+
+<table id="myTable" class="table table-bordered table-condensed table-hover">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserName)
+            </th>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.FullName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.LastName)
+                </th>*@
+            @*<th>
+                    @Html.DisplayNameFor(model => model.Password)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ConfirmPassword)
+                </th>*@
+            @*<th>
+                    @Html.DisplayNameFor(model => model.Address)
+                </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.Country)
+            </th>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.IsCsharp)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IsPython)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IsJava)
+                </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.UpdatedOn)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedOn)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UpdatedBY)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedBy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsActive)
+            </th>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.Image)
+                </th>*@
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserName)
+                </td>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.FullName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LastName)
+                    </td>*@
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.Password)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ConfirmPassword)
+                    </td>*@
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.Address)
+                    </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.Country.Name)
+                </td>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.IsCsharp)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IsPython)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IsJava)
+                    </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.UpdatedOn)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreatedOn)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UpdatedBY)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreatedBy)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsActive)
+                </td>
+                <!--<td>-->
+                @*@Html.DisplayFor(modelItem => item.Image)*@
+                <!--<img src="@item.Image" width="20px;" alt="Proucts Image" />
+                     </td>-->
+                <td>
+
+
+                    <a href="#" class="btn btn-primary" onclick="Editdata(@item.Id)">
+                        <i class="fa fa-pen"></i>
+                    </a>
+
+                    <a href="#" class="btn btn-warning" onclick="Details(@item.Id)">
+                        <i class="fa fa-info"></i>
+                    </a>
+
+                    <a href="#" class="btn btn-danger" onclick="DeleteRecord(@item.Id)">
+                        <i class="fa fa-trash"></i>
+                    </a>
+
+
+
+                </td>
+            </tr>
+        }
+
+    </tbody>
+</table>
+
+
+
+
+
+@*//Update Model*@
+
+
+<div class="modal fade" id="AddUpdateModel" tabindex="1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="AddUpdateModelLabel">Add Client</h4>
+                <button type="button" class="close" data-dismiss="modal">×</button>
+
+            </div>
+            <div class="modal-body">
+                <form>
+                    @* hidden filed for storing Id *@
+                    <div class="form-group">
+                        <input type="text" id="Id" readonly class="form-control" />
+
+                    </div>
+                    <div class="form-group">
+                        <label for="username">User Name</label>
+                        <input type="text" class="form-control" id="username" placeholder="User Name" />
+                    </div>
+                    <div class="form-group">
+                        <label for="fullname">Full Name</label>
+                        <input type="text" class="form-control" id="fullname" placeholder="Full Name" />
+                    </div>
+                    <div class="form-group">
+                        <label for="LastName">Last Name</label>
+                        <input type="text" class="form-control" id="LastName" placeholder="Last Name" />
+                    </div>
+                    <div class="form-group">
+                        <label for="Password">Password</label>
+                        <input type="text" class="form-control" id="Password" placeholder="Password" />
+                    </div>
+                    <div class="form-group">
+                        <label for="ConfirmPassword">Confirm Password</label>
+                        <input type="text" class="form-control" id="ConfirmPassword" placeholder="ConfirmPassword" />
+                    </div>
+                    <div class="form-group">
+                        <label for="Address">Address</label>
+                        <input type="text" class="form-control" id="Address" placeholder="Address" />
+                    </div>
+                    <div class="form-group">
+                        @*<select id="Dropdown" asp-for="UserDbs.CountryIds" asp-items="Model.Countries.ToSelectListItem(Model.UserDbs.CountryIds)" class="form-control"></select>*@
+                        @Html.DropDownList("Country", ViewBag.Country as SelectList, new { @id = "Dropdown", @class = "form-control" })
+
+                    </div>
+
+                    <div class="form-group form-check">
+                        <label class="form-check-label">
+                            <input type="checkbox" id="checkbox" name="checkbox" class="form-check-input" /> @Html.DisplayNameFor(model => model.IsCsharp)
+                        </label>
+                    </div>
+                    <div class="form-group form-check">
+                        <label class="form-check-label">
+                            <input type="checkbox" id="checkboxe" name="checkboxe" class="form-check-input" /> @Html.DisplayNameFor(model => model.IsPython)
+                        </label>
+                    </div>
+                    <div class="form-group form-check">
+                        <label class="form-check-label">
+                            <input type="checkbox" id="checkboxes" name="checkboxes" class="form-check-input" /> @Html.DisplayNameFor(model => model.IsJava)
+                        </label>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+
+                <button type="button" class="btn btn-primary" id="btnUpdateClient" style="display:none;" onclick="return UpdateClient();">Update Client Profile</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@*Details Models*@
+<div class="modal fade" id="DetailsModels" tabindex="1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="DetailModelLabel">Add Client</h4>
+                <button type="button" class="close" data-dismiss="modal">×</button>
+
+            </div>
+            <div class="modal-body">
+                <form>
+                    @* hidden filed for storing Id *@
+                    <input type="hidden" id="Ids" />
+                    <div class="form-group">
+                        <label for="username">User Name</label>
+                        <input type="text" class="form-control" id="user" placeholder="Client's Name" readonly />
+                    </div>
+                    <div class="form-group">
+                        <label for="fullname">Full Name</label>
+                        <input type="text" class="form-control" id="full" placeholder="Email" readonly />
+                    </div>
+                    <div class="form-group">
+                        <label for="LastName">Last Name</label>
+                        <input type="text" class="form-control" id="Last" placeholder="Phone No" readonly />
+                    </div>
+                    <div class="form-group">
+                        <label for="Password">Password</label>
+                        <input type="text" class="form-control" id="Pass" placeholder="Address" readonly />
+                    </div>
+                    <div class="form-group">
+                        <label for="ConfirmPassword">Confirm Password</label>
+                        <input type="text" class="form-control" id="Confirm" placeholder="ConfirmPassword" readonly />
+                    </div>
+                    <div class="form-group">
+                        <label for="Address">Address</label>
+                        <input type="text" class="form-control" id="Add" placeholder="Details" readonly />
+                    </div>
+                    <div class="form-group">
+                        @*<select id="Dropdown" asp-for="UserDbs.CountryIds" asp-items="Model.Countries.ToSelectListItem(Model.UserDbs.CountryIds)" class="form-control"></select>*@
+                        @Html.DropDownList("Country", ViewBag.Country as SelectList, new { @id = "Drop", @class = "form-control" })
+
+                    </div>
+
+                    <div class="form-group form-check">
+                        <label class="form-check-label">
+                            <input type="checkbox" id="checkbo" name="checkbox" class="form-check-input" /> @Html.DisplayNameFor(model => model.IsCsharp)
+                        </label>
+                    </div>
+                    <div class="form-group form-check">
+                        <label class="form-check-label">
+                            <input type="checkbox" id="checkboo" name="checkboxe" class="form-check-input" /> @Html.DisplayNameFor(model => model.IsPython)
+                        </label>
+                    </div>
+                    <div class="form-group form-check">
+                        <label class="form-check-label">
+                            <input type="checkbox" id="checkbooo" name="checkboxes" class="form-check-input" /> @Html.DisplayNameFor(model => model.IsJava)
+                        </label>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+
+                <button type="button" class="btn btn-primary" id="btnUpdateClient" style="display:none;" onclick="return UpdateClient();">Update Client Profile</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+

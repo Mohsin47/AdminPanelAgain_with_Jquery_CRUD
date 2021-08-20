@@ -1,0 +1,138 @@
+﻿@*@model AdminPanelAgain.Models.UserDb*@
+
+
+
+
+
+
+
+
+<!--<div class="modal fade" id="AddUpdateModel" tabindex="1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">×</button>
+                <h4 class="modal-title" id="AddUpdateModelLabel">Add Client</h4>
+            </div>
+            <div class="modal-body">
+                <form>-->
+                    @* hidden filed for storing Id *@
+                    <!--<input type="hidden" id="Id" />
+                    <div class="form-group">
+                        <label for="txtClientName">User Name</label>
+                        <input type="text" class="form-control" id="username" placeholder="Client's Name" />
+                    </div>
+                    <div class="form-group">
+                        <label for="txtEmail">Full Name</label>
+                        <input type="email" class="form-control" id="fullname" placeholder="Email" />
+                    </div>
+                    <div class="form-group">
+                        <label for="txtPhoneNo">Last Name</label>
+                        <input type="email" class="form-control" id="LastName" placeholder="Phone No" />
+                    </div>
+                    <div class="form-group">
+                        <label for="txtAddress">Password</label>
+                        <input type="text" class="form-control" id="Password" placeholder="Address" />
+                    </div>
+                    <div class="form-group">
+                        <label for="txtDetails">Confirm Password</label>
+                        <input type="text" class="form-control" id="ConfirmPassword" placeholder="Details" />
+                    </div>
+                    <div class="form-group">
+                        <label for="txtDetails">Address</label>
+                        <input type="text" class="form-control" id="Address" placeholder="Details" />
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="btnAddClient" onclick="return AddNewClient();">Add New</button>
+                <button type="button" class="btn btn-primary" id="btnUpdateClient" style="display:none;" onclick="return UpdateClient();">Update Client Profile</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>-->
+
+
+
+
+
+<!--<form id="form1" asp-action="Create" method="post" enctype="multipart/form-data">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <input type="hidden" id="Id" />
+
+    <div class="form-group">-->
+
+        @*<label asp-for="UserDbs.UserName" class="control-label"></label>*@
+        <!--<input type="text" id="username" placeholder="Username" class="form-control">-->
+        @*<input asp-for="UserDbs.UserName" class="form-control" />*@
+        @*<span asp-validation-for="UserDbs.UserName" class="text-danger"></span>*@
+    <!--</div>
+    <div class="form-group">-->
+        @*<label asp-for="UserDbs.FullName" class="control-label"></label>*@
+        <!--<input type="text" id="fullname" placeholder="Full Name" class="form-control">-->
+        @*<span asp-validation-for="UserDbs.FullName" class="text-danger"></span>*@
+    <!--</div>
+    <div class="form-group">-->
+        @*<label asp-for="UserDbs.LastName" class="control-label"></label>*@
+        <!--<input type="text" id="LastName" placeholder="Last Name" class="form-control">-->
+        @*<span asp-validation-for="UserDbs.LastName" class="text-danger"></span>*@
+    <!--</div>
+    <div class="form-group">-->
+        @*<label asp-for="UserDbs.Password" class="control-label"></label>*@
+        <!--<input type="text" id="Password" placeholder="Password" class="form-control">-->
+        @*<span asp-validation-for="UserDbs.Password" class="text-danger"></span>*@
+    <!--</div>
+    <div class="form-group">-->
+        @*<label asp-for="UserDbs.ConfirmPassword" class="control-label"></label>*@
+        <!--<input type="text" id="ConfirmPassword" placeholder="ConfirmPassword" class="form-control">-->
+        @*<span asp-validation-for="UserDbs.ConfirmPassword" class="text-danger"></span>*@
+    <!--</div>
+    <div class="form-group">-->
+        @*<label asp-for="UserDbs.Address" class="control-label"></label>*@
+        <!--<input type="text" id="Address" placeholder="Address" class="form-control">-->
+        @*<span asp-validation-for="UserDbs.Address" class="text-danger"></span>*@
+    <!--</div>
+    <div class="form-group">-->
+        @*<select id="Dropdown" asp-for="UserDbs.CountryIds" asp-items="Model.Countries.ToSelectListItem(Model.UserDbs.CountryIds)" class="form-control"></select>*@
+        <!--@Html.DropDownList("Country", ViewBag.Country as SelectList, new { @id = "Dropdown", @class = "form-control" })
+
+    </div>-->
+    @*<div class="form-group form-check">
+            <label class="form-check-label">
+                <input type="checkbox" id="checkbox" name="checkbox" class="form-check-input" asp-for="IsCsharp" /> Html.DisplayNameFor(model => model.UserDbs.IsCsharp)
+            </label>
+        </div>
+        <div class="form-group form-check">
+            <label class="form-check-label">
+                <input type="checkbox" id="checkboxe" name="checkboxe" class="form-check-input" asp-for="IsPython" /> Html.DisplayNameFor(model => model.UserDbs.IsPython)
+            </label>
+        </div>
+        <div class="form-group form-check">
+            <label class="form-check-label">
+                <input type="checkbox" id="checkboxes" name="checkboxes" class="form-check-input" asp-for="IsJava" /> Html.DisplayNameFor(model => model.UserDbs.IsJava)
+            </label>
+        </div>*@
+
+
+    @*<div class="form-group row">
+            <div class="col-2">
+                <label asp-for="UserDbs.Image"></label>
+            </div>
+            <div class="col-5">
+                <input type="file" name="file" id="file" />
+            </div>
+
+
+        </div>*@
+
+    <!--<div class="form-group">
+        <input type="button" id="myBtn" value="Create" class="btn btn-primary " onclick="" />
+        <input type="button" id="btnClear" value="Clear" class="btn btn-danger " />
+
+    </div>
+
+</form>-->
+
+
